@@ -34,7 +34,7 @@ export default function ResultView(prompt: string, toastTitle: string) {
 
         await api.sendMessage(`${prompt}${text}`, {
           onProgress: (partialResponse) => {
-            setResponse(partialResponse.text.replaceAll(/\[\^(.*)\^\]/gi, ""));
+            setResponse(partialResponse.text);
           },
           variant: configuration.conversationStyle,
         });
