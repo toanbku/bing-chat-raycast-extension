@@ -37,7 +37,7 @@
           "title": "Rephrase Prompt",
           "description": "The prompt for the rephrase command",
           "type": "textfield",
-          "default": "Rephrase this selected text below: \n",
+          "default": "Rephrase this using an academic tone: \n",
           "required": false
         }
       ]
@@ -103,7 +103,7 @@
     "typescript": "^4.9.5"
   },
   "scripts": {
-    "build": "ray build -e dist",
+    "build": "ray build dist",
     "dev": "ray develop",
     "fix-lint": "ray lint --fix",
     "lint": "ray lint",
