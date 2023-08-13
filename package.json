@@ -37,7 +37,7 @@
           "title": "Rephrase Prompt",
           "description": "The prompt for the rephrase command",
           "type": "textfield",
-          "default": "Rephrase this using an academic tone: \n",
+          "default": "Rephrase this selected text below: \n",
           "required": false
         }
       ]
