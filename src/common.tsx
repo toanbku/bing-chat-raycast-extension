@@ -17,12 +17,12 @@ export default function ResultView(prompt: string, toastTitle: string) {
       let text = "";
       try {
         text = await getSelectedText();
-      } catch (error) {
+      } catch (error: any) {
         toast.title = "Error";
         toast.style = Toast.Style.Failure;
         setLoading(false);
         setResponse(
-          "⚠️ Raycast was unable to get the selected text. You may try copying the text to a text editor and try again."
+          `⚠️ Raycast was unable to get the selected text. You may try copying the text to a text editor and try again. Error: ${error.message}`
         );
         return;
       }
