@@ -13,7 +13,7 @@ import { ChatView } from "./views/chat";
 import { ModelDropdown } from "./views/model/dropdown";
 import { QuestionForm } from "./views/question/form";
 
-export default function Ask(props: { conversation?: Conversation; questionData: string }) {
+export default function Ask(props: { conversation?: Conversation; questionData?: string }) {
   const conversations = useConversations();
   const models = useModel();
   const chats = useChat<Chat>(props.conversation ? props.conversation.chats : [], props.conversation?.context ?? null);
