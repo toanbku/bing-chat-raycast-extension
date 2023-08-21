@@ -15,7 +15,7 @@ export const ConversationListView = (props: {
         <List.Item
           id={conversation.id}
           key={conversation.id}
-          title={conversation.chats[conversation.chats.length - 1].question}
+          title={conversation.chats[conversation.chats.length - 1].question || ""}
           accessories={[
             { text: conversation.chats[conversation.chats.length - 1].answer },
             { tag: conversation.model.name },
