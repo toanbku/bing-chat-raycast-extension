@@ -12,7 +12,12 @@
   ![](.github/enable-privacy.png)
 
 - Retrieve the whole cookie from bing.com and import it into this extension
-  ![](.github/bing-cookies.png)
+  - Visit [https://bing.com](https://bing.com)
+  - Open console tab
+  - Run script
+    - `document.cookie`
+  - Then copy all of result to clipboard
+    ![](.github/how-to-get-cookie.png)
 
 ### Tips
 
