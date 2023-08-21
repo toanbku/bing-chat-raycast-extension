@@ -1,0 +1,192 @@
+{
+  "$schema": "https://www.raycast.com/schemas/extension.json",
+  "name": "bing-chat-ai",
+  "title": "BingGPT",
+  "description": "Interact with Bing Chat directly from your command bar",
+  "icon": "icon-bing.png",
+  "author": "abielzulio",
+  "contributors": [
+    "timolins",
+    "shichongrui",
+    "pomdtr"
+  ],
+  "categories": [
+    "Applications",
+    "Productivity",
+    "Developer Tools",
+    "Web",
+    "Fun",
+    "Finance",
+    "Other"
+  ],
+  "license": "MIT",
+  "commands": [
+    {
+      "name": "ask",
+      "title": "Ask Question",
+      "subtitle": "Bing Chat AI",
+      "description": "Ask Bing Chat AI via Raycast",
+      "mode": "view"
+    },
+    {
+      "name": "saved",
+      "title": "Saved Answer",
+      "subtitle": "Bing Chat AI",
+      "description": "Collection of your saved answer",
+      "mode": "view"
+    },
+    {
+      "name": "history",
+      "title": "History",
+      "subtitle": "Bing Chat AI",
+      "description": "Collection of your recent answer",
+      "mode": "view"
+    },
+    {
+      "name": "conversation",
+      "title": "Conversations",
+      "subtitle": "Bing Chat AI",
+      "description": "Collection of your recent conversation",
+      "mode": "view"
+    },
+    {
+      "name": "model",
+      "title": "Models",
+      "subtitle": "Bing Chat AI",
+      "description": "Collection of your custom and default model",
+      "mode": "view"
+    },
+    {
+      "name": "summarize",
+      "title": "Summarize",
+      "description": "Summarize selected text",
+      "mode": "view",
+      "preferences": [
+        {
+          "name": "promptSummarize",
+          "title": "Summarize Prompt",
+          "description": "The prompt for the summarize command",
+          "type": "textfield",
+          "default": "Summarize the following text using native language of input text: \n",
+          "required": false
+        }
+      ]
+    },
+    {
+      "name": "rephrase",
+      "title": "Rephrase",
+      "description": "Rephrase selected text",
+      "mode": "view",
+      "preferences": [
+        {
+          "name": "promptRephrase",
+          "title": "Rephrase Prompt",
+          "description": "The prompt for the rephrase command",
+          "type": "textfield",
+          "default": "Rephrase this using an academic tone: \n",
+          "required": false
+        }
+      ]
+    },
+    {
+      "name": "refine",
+      "title": "Refine",
+      "description": "Refine the writing of selected text",
+      "mode": "view",
+      "preferences": [
+        {
+          "name": "promptRefine",
+          "title": "Refine Prompt",
+          "description": "The prompt for the refine command",
+          "type": "textfield",
+          "default": "Refine the writing and correct grammar mistakes: \n",
+          "required": false
+        }
+      ]
+    }
+  ],
+  "preferences": [
+    {
+      "name": "api",
+      "label": "Bing Chat Cookie",
+      "description": "Enter your personal Bing Chat Cookie",
+      "type": "password",
+      "title": "Cookie",
+      "required": true
+    },
+    {
+      "name": "isAutoLoad",
+      "label": "Enable auto-load selected text",
+      "description": "Load selected text from your frontmost application to the question bar automatically",
+      "type": "checkbox",
+      "title": "Auto-load",
+      "default": false,
+      "required": false
+    },
+    {
+      "name": "isAutoFullInput",
+      "label": "Enable full text input initially",
+      "description": "Use full text input form when asking question for the first time",
+      "type": "checkbox",
+      "title": "Use Full Text Input",
+      "default": false,
+      "required": false
+    },
+    {
+      "name": "isAutoTTS",
+      "label": "Enable text-to-speech for every response",
+      "description": "Enable auto TTS everytime you get a generated answer",
+      "type": "checkbox",
+      "title": "Text-to-Speech",
+      "required": false,
+      "default": false
+    },
+    {
+      "name": "conversationStyle",
+      "description": "Choose a conversation style",
+      "type": "dropdown",
+      "data": [
+        {
+          "title": "Balanced",
+          "value": "Balanced"
+        },
+        {
+          "title": "Creative",
+          "value": "Creative"
+        },
+        {
+          "title": "Precise",
+          "value": "Precise"
+        }
+      ],
+      "required": true,
+      "title": "Conversation style"
+    }
+  ],
+  "dependencies": {
+    "@raycast/api": "^1.47.0",
+    "@types/uuid": "^9.0.0",
+    "bing-chat": "^0.2.3",
+    "isomorphic-fetch": "^3.0.0",
+    "openai": "^3.2.1",
+    "say": "^0.16.0",
+    "uuid": "^9.0.0"
+  },
+  "devDependencies": {
+    "@types/node": "18.8.3",
+    "@types/react": "18.0.9",
+    "@typescript-eslint/eslint-plugin": "^5.0.0",
+    "@typescript-eslint/parser": "^5.0.0",
+    "eslint": "^7.32.0",
+    "eslint-config-prettier": "^8.3.0",
+    "prettier": "^2.5.1",
+    "typescript": "^4.4.3"
+  },
+  "scripts": {
+    "build": "ray build -e dist",
+    "dev": "ray develop",
+    "fix-lint": "ray lint --fix",
+    "lint": "ray lint",
+    "publish": "ray publish"
+  }
+}
