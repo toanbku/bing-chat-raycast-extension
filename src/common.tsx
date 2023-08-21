@@ -3,13 +3,13 @@ import { getSelectedText, Detail, showToast, Toast } from "@raycast/api";
 import { useEffect, useMemo, useState } from "react";
 import Ask from "./ask";
 import { v4 as uuidv4 } from "uuid";
-import { Model } from "./type";
-import { DEFAULT_MODEL } from "./hooks/useModel";
+import { DEFAULT_MODEL, useModel } from "./hooks/useModel";
 
-export default function ResultView(toastTitle: string, model?: Model) {
+export default function ResultView(toastTitle: string, modelId: string) {
   const [response, setResponse] = useState("");
   const [loading, setLoading] = useState(true);
   const [question, setQuestion] = useState("");
+  const models = useModel();
 
   async function getResult() {
     const toast = await showToast(Toast.Style.Animated, toastTitle);
@@ -39,6 +39,10 @@ export default function ResultView(toastTitle: string, model?: Model) {
     getResult();
   }, []);
 
+  const model = useMemo(() => {
+    return models.data.find((m) => m.id === modelId);
+  }, [models.data, models.isLoading]);
+
   const conversation = useMemo(
     () => ({
       id: uuidv4(),
@@ -49,10 +53,10 @@ export default function ResultView(toastTitle: string, model?: Model) {
       created_at: new Date().toISOString(),
       context: null,
     }),
-    []
+    [model]
   );
 
-  if (!question) {
+  if (!question || !model || models.isLoading) {
     return <Detail isLoading={loading} markdown={response} />;
   }
   return <Ask conversation={conversation} questionData={question} />;

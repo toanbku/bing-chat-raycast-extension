@@ -8,16 +8,17 @@
 
 ### How to use
 
-- Make sure that you granted Raycast access to "Accessibility" in System Settings > Privacy & Security > Accessibility.
-  ![](.github/enable-privacy.png)
-
 - Retrieve the whole cookie from bing.com and import it into this extension
+
   - Visit [https://bing.com](https://bing.com)
   - Open console tab
   - Run script
     - `document.cookie`
   - Then copy all of result to clipboard
     ![](.github/how-to-get-cookie.png)
+
+- Make sure that you granted Raycast access to "Accessibility" in System Settings > Privacy & Security > Accessibility.
+  ![](.github/enable-privacy.png)
 
 ### Tips
 

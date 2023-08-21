@@ -48,10 +48,10 @@ export function useModel(): ModelHook {
       setLoading(true);
       const storedModels = await LocalStorage.getItem<string>("models");
 
-      if (!storedModels) {
-        setData(DEFAULT_MODELS);
-      } else {
+      if (storedModels?.length) {
         setData((previous) => [...previous, ...JSON.parse(storedModels)]);
+      } else {
+        setData(DEFAULT_MODELS);
       }
       setLoading(false);
     })();

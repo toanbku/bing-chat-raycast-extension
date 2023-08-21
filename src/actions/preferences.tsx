@@ -2,6 +2,11 @@ import { Action, ActionPanel, Icon, openExtensionPreferences } from "@raycast/ap
 
 export const PreferencesActionSection = () => (
   <ActionPanel.Section title="Preferences">
-    <Action icon={Icon.Gear} title="Open Extension Preferences" onAction={openExtensionPreferences} />
+    <Action
+      icon={Icon.Gear}
+      title="Open Extension Preferences"
+      onAction={openExtensionPreferences}
+      shortcut={{ modifiers: ["cmd", "shift"], key: "p" }}
+    />
   </ActionPanel.Section>
 );

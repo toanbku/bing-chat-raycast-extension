@@ -60,10 +60,14 @@ export function useChat<T extends Chat>(props: T[], ctx: ChatMessage | null): Ch
         variant: configuration.conversationStyle,
       });
 
-      chat = { ...chat, answer: ans.text };
+      if (!ans.text) {
+        ans.text =
+          "⚠️ There was an error getting response. \n Try to start another conversation or update your Bing cookie (Cmd + Shift + P) \n\n [Document for how to get Bing Cookie](https://github.com/toanbku/bing-chat-raycast-extension#how-to-use)";
+      }
 
-      setLoading(false);
-      clearSearchBar();
+      ans.text = ans.text.replaceAll(/\[\^(\d+)\^\]/g, "");
+
+      chat = { ...chat, answer: ans.text };
 
       toast.title = "Got your answer!";
       toast.style = Toast.Style.Success;
@@ -71,7 +75,21 @@ export function useChat<T extends Chat>(props: T[], ctx: ChatMessage | null): Ch
         say.stop();
         say.speak(chat.answer);
       }
-
+      setContext(ans);
+    } catch (err) {
+      toast.title = "Error";
+      if (err instanceof Error) {
+        chat = {
+          ...chat,
+          answer:
+            "⚠️ Cookie expired. Please update your Bing cookies using hotkey Cmd + Shift + P \n\n [Document for how to get Bing Cookie](https://github.com/toanbku/bing-chat-raycast-extension#how-to-use)",
+        };
+        toast.message = err.message;
+      }
+      toast.style = Toast.Style.Failure;
+    } finally {
+      setLoading(false);
+      clearSearchBar();
       setData((prev) => {
         return prev.map((a) => {
           if (a.id === chat.id) {
@@ -81,14 +99,6 @@ export function useChat<T extends Chat>(props: T[], ctx: ChatMessage | null): Ch
         });
       });
       history.add(chat);
-
-      setContext(ans);
-    } catch (err) {
-      toast.title = "Error";
-      if (err instanceof Error) {
-        toast.message = err?.message;
-      }
-      toast.style = Toast.Style.Failure;
     }
   }
 
