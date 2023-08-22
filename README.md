@@ -9,6 +9,10 @@
     </a>
 </p>
 
+### Demo
+[![Demo video](https://img.youtube.com/vi/7KxXkd9yy8g/0.jpg)](https://www.youtube.com/watch?v=7KxXkd9yy8g)
+
+
 ### How to install
 
 - Download the latest release from [this link](https://github.com/toanbku/bing-chat-raycast-extension/releases)
